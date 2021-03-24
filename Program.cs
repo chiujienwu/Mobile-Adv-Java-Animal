@@ -6,8 +6,8 @@ namespace Adv_Java_Animal
 {
     class Program
     {
-        private readonly static FileOutput outFile = new FileOutput("animals.txt");
-        private readonly static FileInput inFile = new FileInput("animals.txt");
+        //private static FileOutput outFile = new FileOutput("animals.txt");
+        //private static FileInput inFile = new FileInput("animals.txt");
 
         public static void Main(string[] args)
         {
@@ -21,7 +21,7 @@ namespace Adv_Java_Animal
             ArrayList options = new ArrayList() { "DOG", "CAT" };
             Menu menu = new Menu(zoo, options);
 
-            string createAnimals = null;
+            string createAnimals;
 
             do
             {
@@ -38,24 +38,26 @@ namespace Adv_Java_Animal
                 }
 
             } while (createAnimals != null);
-            
+
+            FileOutput outFile = new FileOutput("animals.txt");
 
             foreach (Talkable thing in zoo)
             {
-                Console.WriteLine(thing);
-                //PrintOut(thing);
+                //Console.WriteLine(thing);
+                outFile.FileWrite(thing.ToString());
             }
 
-            //outFile.FileClose();
-            //inFile.FileRead();
-            //inFile.FileClose();
+            outFile.FileClose();
+            //inFile.fileRead();
+            //inFile.fileClose();
 
-            //FileInput inData = new FileInput("animals.txt");
-            //String line;
-            //while ((line = inData.FileReadLine()) != null)
-            //{
-            //    Console.WriteLine(line);
-            //}
+            FileInput inData = new FileInput("animals.txt");
+            String line;
+            while ((line = inData.FileReadLine()) != null)
+            {
+                Console.WriteLine(line);
+            }
+            inData.FileClose();
         }
 
         //public static void PrintOut(Talkable p)

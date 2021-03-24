@@ -23,7 +23,6 @@ namespace Adv_Java_Animal
             {
                 Console.WriteLine("File Open Error: " + fileName + " " + e);
             }
- 
         }
 
         public void FileRead()
